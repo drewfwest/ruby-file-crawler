@@ -11,21 +11,22 @@
 # 7. Check to make sure change is permanent.
 
 def read_directory(directory)
-  # Dir["./**/*.rb"].each { |file| puts file }
-  Dir["#{directory}/**/*.rb"].each { |file| `subl "#{file}"` }
+  Dir["#{directory}/**/*.rb"].each { |file| rao_sucks "#{file}" }
+end
+
+def rao_sucks(file)
+  f = File.open(file, mode='r+')
+  lines = f.readlines
+  f.close
+
+  lines = ["#Rao sucks.\n"] + lines
+
+  new_file = File.new(file, "w")
+  lines.each { |line| new_file.write line }
+  new_file.close
 end
 
 read_directory('./')
-
-
-
-# def rao_sucks(file)
-#   # File.open(file) do
-#   File.open(file, mode='w') { |file| file.write('#Rao sucks.') }
-# end
-
-# rao_sucks('test.rb')
-
 
 
 # require 'filelutils'
