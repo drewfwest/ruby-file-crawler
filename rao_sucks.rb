@@ -10,18 +10,28 @@
 # 6. Close file.
 # 7. Check to make sure change is permanent.
 
+def read_directory(directory)
+  # Dir["./**/*.rb"].each { |file| puts file }
+  Dir["#{directory}/**/*.rb"].each { |file| `subl "#{file}"` }
+end
+
+read_directory('./')
+
+
+
+# def rao_sucks(file)
+#   # File.open(file) do
+#   File.open(file, mode='w') { |file| file.write('#Rao sucks.') }
+# end
+
+# rao_sucks('test.rb')
+
+
+
 # require 'filelutils'
 
 # def iterate_files(directory)
 #   directory.each do {|file| rao_sucks(file) }
 # end
-
-
-def rao_sucks(file)
-  # File.open(file) do
-  File.open(file, mode='w') { |file| file.write('#Rao sucks.') }
-end
-
-rao_sucks('test.rb')
 
 # iterate_files('./')
